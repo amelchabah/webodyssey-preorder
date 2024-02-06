@@ -1,0 +1,89 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000&display=swap");
+
+// declare humane font from /fonts folder
+@font-face {
+  font-family: "Humane";
+  src: url("../styles/fonts/Humane-Regular.woff2") format("woff2"),
+    url("../styles/fonts/Humane-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("../styles/fonts/Humane-ExtraLight.woff2") format("woff2"),
+    url("../styles/fonts/Humane-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("../styles/fonts/Humane-Light.woff2") format("woff2"),
+    url("../styles/fonts/Humane-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("../styles/fonts/Humane-Medium.woff2") format("woff2"),
+    url("../styles/fonts/Humane-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("../styles/fonts/Humane-SemiBold.woff2") format("woff2"),
+    url("../styles/fonts/Humane-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("../styles/fonts/Humane-Bold.woff2") format("woff2"),
+    url("../styles/fonts/Humane-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("../styles/fonts/Humane-Thin.woff2") format("woff2"),
+    url("../styles/fonts/Humane-Thin.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+:root {
+  --purple: #6040ff;
+  --green: #bdff00;
+  --light: #dedede;
+  --dark: #000000;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    scroll-behavior: smooth;    
+    background-color: var(--dark);
+    color: var(--light);
+    font-family: "Humane", sans-serif;
+}
+
+a {
+    color: var(--light);
+    text-decoration: none;
+}
