@@ -8,7 +8,7 @@ export default function Home() {
   useEffect(() => {
 
     const intervalId = setInterval(() => {
-      const future = Date.parse("June 13, 2024 18:00:00");
+      const future = Date.parse("June 13, 2024 00:00:00");
       const now = new Date();
       const diff = future - now;
 
@@ -23,6 +23,50 @@ export default function Home() {
     return () => clearInterval(intervalId);
 
   }, []);
+
+
+  const [formData, setFormData] = useState({
+    name: "",
+    firstName: "",
+    promo: "",
+    mail: ""
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3001/postReservations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+      if (response.ok) {
+        console.log("Réservation ajoutée avec succès !");
+        // Réinitialiser le formulaire après avoir soumis les données
+        setFormData({
+          name: "",
+          firstName: "",
+          promo: "",
+          mail: ""
+        });
+      } else {
+        console.error("Erreur lors de l'ajout de la réservation :", response.statusText);
+      }
+    } catch (error) {
+      console.error("Erreur lors de la soumission du formulaire :", error);
+    }
+  };
+
 
 
 
@@ -44,11 +88,16 @@ export default function Home() {
         <Link href="#form" className={styles.button}>Réserver</Link>
       </header>
       <main className={styles.main}>
-        <form action="" id="form">
-          <input type="text" placeholder="Nom" />
-          <input type="text" placeholder="Prénom" />
-          <input type="text" placeholder="Promotion" />
-          <input type="email" placeholder="Email" />
+        <h2>RéSERVEZ VOTRE ENTRée</h2>
+        <form onSubmit={handleSubmit} id="form">
+          <label htmlFor="name">Nom</label>
+          <input type="text" name="name" placeholder="Nom" value={formData.name} onChange={handleChange} />
+          <label htmlFor="firstName">Prénom</label>
+          <input type="text" name="firstName" placeholder="Prénom" value={formData.firstName} onChange={handleChange} />
+          <label htmlFor="promo">Promotion</label>
+          <input type="text" name="promo" placeholder="Promotion" value={formData.promo} onChange={handleChange} />
+          <label htmlFor="mail">Email</label>
+          <input type="email" name="mail" placeholder="Email" value={formData.mail} onChange={handleChange} />
           <button type="submit">Réserver</button>
         </form>
       </main>
